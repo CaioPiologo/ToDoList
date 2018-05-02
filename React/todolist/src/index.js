@@ -1,22 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
-class Task extends React.Component {
-
-    onDelete = (() => {this.props.onDeleteTask(this.props.name)}); 
-
-    render(){
-        const name = this.props.name;
-        return(
-            <li>
-                {name}
-                <button onClick={this.onDelete}> - </button>
-            </li>
-        )
-    }
-}
-
+import Task from './Components/Task';
+import InputBar from './Components/InputBar';
 
 
 class TodoList extends React.Component {
@@ -28,16 +13,18 @@ class TodoList extends React.Component {
             taskName:   ""
         }
         this.onDeleteTask = this.onDeleteTask.bind(this);
-        this.onAddTask = this.onAddTask.bind(this);
-        this.nameChange = this.nameChange.bind(this);
+        this.onAddTask =    this.onAddTask.bind(this);
+        this.nameChange =   this.nameChange.bind(this);
     }
 
     onDeleteTask(name){
-        const newList = this.state.list;
-        const pos = newList.indexOf(name);
+        const newList = this.state.list.slice();
+        const pos =     newList.indexOf(name);
+
         if(pos > -1){
             newList.splice(pos, 1);
         }
+
         this.setState({
             list: newList
         });
@@ -47,7 +34,7 @@ class TodoList extends React.Component {
         e.preventDefault();
         if(this.state.taskName === "") return;
 
-        const newList = this.state.list;
+        const newList = this.state.list.slice();
         newList.push(this.state.taskName);
         this.setState({
             list:       newList,
@@ -71,18 +58,14 @@ class TodoList extends React.Component {
         return (
             <div>
                 <h1> ToDo List:</h1>
+                <InputBar 
+                    value={this.state.taskName}
+                    onAddTask={this.onAddTask}
+                    onChange={this.nameChange}
+                />
                 <ul>
                     {list}
                 </ul>
-                <form onSubmit={this.onAddTask}>
-                    Task: <input 
-                        type="text" 
-                        name="Task" 
-                        value={this.state.taskName} 
-                        onChange={this.nameChange}
-                        />
-                    <input type="submit" value="Submit"/>
-                </form>
             </div>
         )
     }
