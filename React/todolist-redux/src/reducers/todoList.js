@@ -1,9 +1,10 @@
 
 const todo = (state, action) => {
-    switch(state.type){
+    switch(action.type){
         case "ADD_TODO":
             return {
-                //TODO props
+                text: action.text,
+                id: action.id
             };
         default:
             return state;
@@ -11,7 +12,8 @@ const todo = (state, action) => {
 }
 
 const todoList = (state =[], action) => {
-    switch(state.type){
+    console.log(...state);
+    switch(action.type){
         case "ADD_TODO":
             return [
                 ...state,
