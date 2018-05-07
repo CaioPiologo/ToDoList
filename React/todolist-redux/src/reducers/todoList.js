@@ -3,7 +3,7 @@ const todo = (state, action) => {
     switch(action.type){
         case "ADD_TODO":
             return {
-                text: action.text,
+                name: action.name,
                 id: action.id
             };
         default:
@@ -12,7 +12,6 @@ const todo = (state, action) => {
 }
 
 const todoList = (state =[], action) => {
-    console.log(...state);
     switch(action.type){
         case "ADD_TODO":
             return [

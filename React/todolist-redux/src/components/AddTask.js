@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { handleChange } from '../utils';
 import { addTask } from '../actions';
 
-class AddTodo extends Component {
+class AddTask extends Component {
 
     constructor(props){
         super(props);
@@ -42,4 +42,4 @@ class AddTodo extends Component {
     };
 }
 
-export default connect()(AddTodo);
+export default connect()(AddTask);

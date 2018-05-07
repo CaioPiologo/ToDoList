@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddTodo from './AddTodo';
+import AddTask from './AddTask';
 import TodoList from './TodoList';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
       return (
         <div>
           <h2>ToDo List:</h2>
-          <AddTodo/>
+          <AddTask/>
           <TodoList/>
         </div>
       );

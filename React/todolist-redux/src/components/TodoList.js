@@ -14,7 +14,7 @@ class TodoList extends Component {
         const list = this.props.todoList.map(task => (
             <Task 
                 key={task.id}
-                name={task.text}
+                name={task.name}
             />
         ));
         return (

@@ -1,8 +1,15 @@
 let idGenerator = 0;
-export const addTask = (text) => {
+export const addTask = (name) => {
     return {
         type: 'ADD_TODO',
         id: (idGenerator++).toString(),
-        text:text
+        name
+    }
+}
+
+export const removeTask = (pos) => {
+    return {
+        type: 'REMOVE_TODO',
+        pos
     }
 }
